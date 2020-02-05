@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Image Filters</title>
+	<meta charset="urf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=.8">
+	<link rel="icon" type="image/png" href="images/image_filter.png">
+	<meta name="description" content="Test Filtering using your Images with beautiful UI">
+	<link href="mycss.css" rel="stylesheet">
+</head>
+<body class="flexcenter">
+<div class="fixed">Image Filters</div>
+<input type="file" id="fileUpload"/>
+<div class="card hover">
+	<div class="box">
+		<img id="filter" src="images/image_filter.png">
+		<p id="showfilter">Filter Value</p>
+	</div>
+	<div class="rightfix" onclick="fileUpload.click(this)">
+		<div class="pulse"></div>
+	</div>
+</div>
+<div class="cardfooter flexcenter">
+	<div class="circle invert" title="Invert Image">
+		<img class="pic" src="images/image_filter.png">
+		<input type="range" min=1 max=100 step=1 value="50" class="slider" oninput="filter.style.filter='invert('+this.value+'%)',showfilter.innerHTML=filter.style.filter">
+	</div>
+	<div class="circle hue-rotate" title="Hue-Rotate Image">
+		<img class="pic" src="images/image_filter.png">
+		<input type="range" min=1 max=360 step=1 value="60" class="slider" oninput="filter.style.filter='hue-rotate('+this.value+'deg)',showfilter.innerHTML=filter.style.filter">
+	</div>
+	<div class="circle sepia" title="Sepia Image">
+		<img class="pic" src="images/image_filter.png">
+		<input type="range" min=1 max=100 step=1 value="50" class="slider" oninput="filter.style.filter='sepia('+this.value+'%)',showfilter.innerHTML=filter.style.filter">
+	</div>
+	<div class="circle saturate" title="Saturate Image">
+		<img class="pic" src="images/image_filter.png">
+		<input type="range" min=1 max=100 step=1 value="50" class="slider" oninput="filter.style.filter='saturate('+this.value+'%)',showfilter.innerHTML=filter.style.filter">
+	</div>
+	<div class="circle blur" title="Blur Image">
+		<img class="pic" src="images/image_filter.png">
+		<input type="range" min=0 max=50 step=1 value="20" class="slider" oninput="filter.style.filter='blur('+this.value+'px)',showfilter.innerHTML=filter.style.filter">
+	</div>
+</div>
+<a id="source" target="_blank" alt="Sorce Code" href="https://github.com/rahul3v/image_filter">Sorce Code</a>
+<script type="text/javascript">
+fileUpload.onchange = function () {
+    var reader = new FileReader();
+    reader.onload = (e)=>filter.src= e.target.result;
+    reader.readAsDataURL(this.files[0]);
+};</script>
+</body>
+</html>
